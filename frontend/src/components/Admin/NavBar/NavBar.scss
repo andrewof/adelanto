@@ -1,0 +1,29 @@
+.navbar-menu {
+  background-color: #0f212e !important;
+
+  &-logo {
+    width: 80px;
+  }
+  
+  .item {
+    color: #fff !important;
+  }
+
+  .right.menu {
+    .item {
+      color: #fff !important;
+
+      .ui.button {
+        background-color: transparent !important;
+        color: #ffffff !important;
+        transition: all .3s !important;
+      }
+
+      .ui.button:hover {
+        background-color: #f0f0f0 !important;
+        color: #1475e1 !important;
+      }
+    }
+  }
+}
+

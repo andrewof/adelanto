@@ -1,7 +1,8 @@
 import React from 'react';
-import "./AdminLayout.scss"
+import { Navbar } from "../../components/Admin"
 import { LoginAdmin } from '../../pages/Admin';
 import { useAuth } from "../../hooks";
+import "./AdminLayout.scss";
 
 export function AdminLayout({ children }) {
   const { auth } = useAuth();
@@ -9,8 +10,10 @@ export function AdminLayout({ children }) {
   if (!auth) return <LoginAdmin/>
 
   return (
-    <div>
-      <h2>AdminLayout</h2>
+    <div className="admin-layout">
+      <div className="admin-layout-navbar">
+        <Navbar />
+      </div>
 
       {children}
     </div>

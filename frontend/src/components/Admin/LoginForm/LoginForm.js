@@ -28,6 +28,7 @@ export function LoginForm() {
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object(validateSchema()),
+    validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
         const response = await loginApi(formValue);
