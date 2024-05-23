@@ -12,10 +12,10 @@ class UserSerializer(serializers.ModelSerializer):
 class ClienteSerializer(serializers.ModelSerializer):
   class Meta:
     model = Cliente
-    fields = ('id', 'cedula','first_name', 'last_name', 'email', 'password', 'direccion', 'codigo_postal', 'is_active')
+    fields = ('id', 'cedula','first_name', 'last_name', 'email', 'password', 'direccion', 'codigo_postal', 'is_active', 'is_staff')
 
 
 class TecnicoSerializer(serializers.ModelSerializer):
   class Meta:
     model = Tecnico
-    fields = ('id', 'cedula','first_name', 'last_name', 'email', 'password', 'profesion', 'experiencia', 'is_active')
+    fields = ('id', 'cedula','first_name', 'last_name', 'email', 'password', 'profesion', 'experiencia', 'is_active', 'is_staff')

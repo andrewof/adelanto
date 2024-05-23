@@ -1,0 +1,27 @@
+.formulario-modal {
+  border-radius: 30px !important;
+  overflow: hidden !important;
+  
+  .ui.modal {
+    background-color: #0f212e !important;
+    overflow: hidden !important;
+    border: none !important;
+  }
+
+  .header {
+    background-color: #1a2c38 !important; 
+    color: #f0f0f0 !important;
+    font-weight: 30px !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important; 
+  }
+
+  .content {
+    background-color: #0f212e !important; 
+    color: #f0f0f0 !important;
+    padding: 15px !important; 
+  }
+}
+
+.ui.dimmer.modals {
+  background-color: transparent !important;
+}
