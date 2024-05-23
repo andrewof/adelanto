@@ -3,7 +3,7 @@ import './ClientLayout.scss';
 
 export function ClientLayout({ children }) {
   return (
-    <div>
+    <div className="cliente-layout">
       <h2>ClientLayout</h2>
 
       {children}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from "../../components/Admin"
-import { LoginAdmin } from '../../pages/Admin';
+import { LoginAdmin, HomeAdmin } from '../../pages/Admin';
 import { useAuth } from "../../hooks";
 import "./AdminLayout.scss";
 
@@ -15,7 +15,9 @@ export function AdminLayout({ children }) {
         <Navbar />
       </div>
 
-      {children}
+      <div className="body">
+        { children }
+      </div>
     </div>
   )
 }

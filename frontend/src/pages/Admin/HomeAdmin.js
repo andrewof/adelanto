@@ -1,11 +1,10 @@
 import React from "react";
-import { useAuth } from "../../hooks";
+import "./HomeAdmin.scss";
 
 export function HomeAdmin() {
-  const { logout } = useAuth();
 
   return (
-    <div>
+    <div className="home">
       <h1>HomeAdmin</h1>
     </div>
   )
