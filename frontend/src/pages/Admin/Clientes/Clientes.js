@@ -6,8 +6,6 @@ import "./Clientes.scss";
 
 export function Clientes() {
   const { loading, clientes, getClientes } = useUser();
-  console.log("loading ->", loading);
-  console.log("clientes ->", clientes);
 
   useEffect(() => {
     getClientes()
@@ -17,7 +15,7 @@ export function Clientes() {
     <div className="lista-clientes">
       <h2 className="title">Clientes</h2>
       {loading ? (
-        <Spinner animation="border" variant="primary" />
+        <Spinner animation="grow" variant="primary" />
       ):(
         <TablaClientes clientes={clientes}/>
       )}

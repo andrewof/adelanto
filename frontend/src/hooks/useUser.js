@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { getMeApi, getClientesApi } from "../api/user";
+import { getMeApi, getClientesApi, getTecnicosApi } from "../api/user";
 import { useAuth } from "../hooks";
 
 export function useUser() {
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
   const [clientes, setClientes] = useState(null);
+  const [tecnicos, setTecnicos] = useState(null);
   const { auth } = useAuth();
 
   const getMe = async (token) => {
@@ -27,13 +28,27 @@ export function useUser() {
       setLoading(false);
       setError(error)
     }
+  };
+
+  const getTecnicos = async () => {
+    try {
+      setLoading(true);
+      const response = await getTecnicosApi(auth.token);
+      setLoading(false);
+      setTecnicos(response);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
   }
 
   return {
     loading,
     error,
     clientes,
+    tecnicos,
     getMe,
     getClientes,
+    getTecnicos,
   };
 }
