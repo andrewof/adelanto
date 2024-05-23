@@ -1,35 +1,65 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../../hooks";
-import { Spinner } from "react-bootstrap";
 import { TablaTecnicos, FormularioModal, TecnicosForm } from "../../../components/Admin";
-import { Button } from "semantic-ui-react";
+import { Button, Loader } from "semantic-ui-react";
 import "./Tecnicos.scss";
 
 export function Tecnicos() {
+  const [titleModal, setTitleModal] = useState(null);
+  const [contentModal, setContentModal] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const { loading, tecnicos, getTecnicos } = useUser();
+  const [refetch, setRefetch] = useState(false);
+  const { loading, tecnicos, getTecnicos, deleteTecnico } = useUser();
 
-  const openCloseModal = () => setShowModal((prevState) => !prevState)
-
+  
   useEffect(() => {
     getTecnicos();
-  }, [])
+  }, [refetch])
+  
+  const openCloseModal = () => setShowModal((prevState) => !prevState)
+  const onRefetch = () => setRefetch((prev) => !prev);
+
+  const addTecnico = () => {
+    setTitleModal("Registrar Técnico");
+    setContentModal(<TecnicosForm onClose={openCloseModal} onRefetch={onRefetch} titleBtn="Registrar"/>);
+    openCloseModal();
+  }
+
+  const updateTecnico = (data) => {
+    setTitleModal("Actualizar Técnico");
+    setContentModal(<TecnicosForm onClose={openCloseModal} onRefetch={onRefetch} titleBtn="Actualizar" tecnico={data}/>)
+    openCloseModal();
+  }
+
+  const deleteTecnicos = async (data) => {
+    const result = window.confirm(`¿Eliminar usuario ${data.email}?`)
+
+    if (result) {
+      try {
+        await deleteTecnico(data.id)
+        onRefetch();
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  }
 
   return (
     <div className="lista-tecnicos">
       <h2 className="title">Técnicos</h2>
-      <Button onClick={openCloseModal}>Crear técnico</Button>
+      <Button onClick={addTecnico}>Crear técnico</Button>
 
       {loading ? (
-        <Spinner animation="grow" variant="primary" />
+        <Loader active inline="centered"/>
       ):(
-        <TablaTecnicos tecnicos={tecnicos}/>
+        <TablaTecnicos tecnicos={tecnicos} updateTecnico={updateTecnico} deleteTecnico={deleteTecnicos}/>
       )}
 
-      <FormularioModal 
+      <FormularioModal
+        title={titleModal}
         showModal={showModal} 
         onClose={openCloseModal}
-        contenido={<TecnicosForm />}
+        contenido={contentModal}
       />
     </div>
   )

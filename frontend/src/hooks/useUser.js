@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getMeApi, getClientesApi, getTecnicosApi,
-  setTecnicoApi
+  setTecnicoApi, updateTecnicoApi, deleteTecnicoApi
  } from "../api/user";
 import { useAuth } from "../hooks";
 
@@ -55,6 +55,28 @@ export function useUser() {
     }
   }
 
+  const updateTecnico = async (id, data) => {
+    try {
+      setLoading(true);
+      await updateTecnicoApi(id, data, auth.token);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  }
+
+  const deleteTecnico = async (id) => {
+    try {
+      setLoading(true);
+      await deleteTecnicoApi(id, auth.token);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  }
+
   return {
     loading,
     error,
@@ -64,5 +86,7 @@ export function useUser() {
     getClientes,
     getTecnicos,
     setTecnico,
+    updateTecnico,
+    deleteTecnico,
   };
 }

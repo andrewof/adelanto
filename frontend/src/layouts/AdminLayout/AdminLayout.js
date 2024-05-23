@@ -7,7 +7,7 @@ import "./AdminLayout.scss";
 export function AdminLayout({ children }) {
   const { auth } = useAuth();
 
-  if (!auth) return <LoginAdmin/>
+  if (!auth || !auth.me || !auth.me.is_staff) return <LoginAdmin />
 
   return (
     <div className="admin-layout">

@@ -3,7 +3,7 @@ import { Table, Button } from "semantic-ui-react";
 import { map } from "lodash";
 import "./TablaTecnicos.scss";
 
-export function TablaTecnicos({ tecnicos }) {
+export function TablaTecnicos({ tecnicos, updateTecnico, deleteTecnico }) {
   return (
     <Table className="tabla-tecnicos-container">
       <Table.Header>
@@ -28,7 +28,7 @@ export function TablaTecnicos({ tecnicos }) {
             <Table.Cell>{tecnico.profesion}</Table.Cell>
             <Table.Cell>{tecnico.experiencia}</Table.Cell>
             
-            <Actions tecnico={tecnico}/>
+            <Actions tecnico={tecnico}  updateTecnico={updateTecnico} deleteTecnico={deleteTecnico}/>
           </Table.Row>
         ))}
       </Table.Body>
@@ -36,11 +36,11 @@ export function TablaTecnicos({ tecnicos }) {
   )
 }
 
-function Actions({ tecnico }) {
+function Actions({ tecnico, updateTecnico, deleteTecnico }) {
   return (
     <Table.Cell>
-      <Button onClick={() => console.log(`Editar tecnico ${tecnico.email}`)}>Editar</Button>
-      <Button onClick={() => console.log(`Eliminar tecnico ${tecnico.email}`)}>Eliminar</Button>
+      <Button onClick={() => updateTecnico(tecnico)}>Editar</Button>
+      <Button onClick={() => deleteTecnico(tecnico)}>Eliminar</Button>
     </Table.Cell>
   )
 }

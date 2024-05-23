@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useUser } from "../../../hooks";
-import { Spinner } from "react-bootstrap";
+import { Loader } from "semantic-ui-react";
 import { TablaClientes } from "../../../components/Admin";
 import "./Clientes.scss";
 
@@ -15,7 +15,7 @@ export function Clientes() {
     <div className="lista-clientes">
       <h2 className="title">Clientes</h2>
       {loading ? (
-        <Spinner animation="grow" variant="primary" />
+        <Loader/>
       ):(
         <TablaClientes clientes={clientes}/>
       )}

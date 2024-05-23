@@ -5,17 +5,19 @@ import  * as Yup from "yup";
 import { useUser } from "../../../../hooks";
 import "./TecnicosForm.scss";
 
-export function TecnicosForm() {
-  const { setTecnico } = useUser();
+export function TecnicosForm({ onClose, onRefetch, titleBtn, tecnico }) {
+  const { setTecnico, updateTecnico } = useUser();
 
   const formik = useFormik({
-    initialValues: initialValues(),
-    validationSchema: Yup.object(schema()),
+    initialValues: initialValues(tecnico),
+    validationSchema: Yup.object(tecnico ? updateSchema() : schema()),
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        await setTecnico(formValue)
-        console.log("Usuario creado correctamente")
+        if (tecnico) await updateTecnico(tecnico.id, formValue)
+        else await setTecnico(formValue);
+        onRefetch();
+        onClose();
       } catch (error) {
         console.error(error)
       }
@@ -60,20 +62,20 @@ export function TecnicosForm() {
         error={formik.errors.experiencia}
       />
 
-      <Button type="submit" content="Registrar"/>
+      <Button type="submit" content={titleBtn}/>
     </Form>
   )
 }
 
-function initialValues() {
+function initialValues(tecnico) {
   return {
-    cedula: "",
-    first_name: "",
-    last_name: "",
-    email: "",
+    cedula: tecnico?.cedula || "",
+    first_name: tecnico?.first_name || "",
+    last_name: tecnico?.last_name || "",
+    email: tecnico?.email || "",
     password: "",
-    profesion: "",
-    experiencia: "",
+    profesion: tecnico?.profesion || "",
+    experiencia: tecnico?.experiencia || "",
     is_active: true,
     is_staff: false
   }
@@ -86,6 +88,18 @@ function schema() {
     last_name: Yup.string().required(true),
     email: Yup.string().email(true).required(true),
     password: Yup.string().required(true),
+    profesion: Yup.string().required(true),
+    experiencia: Yup.number().required(true),
+  }
+}
+
+function updateSchema() {
+  return {
+    cedula: Yup.string().required(true),
+    first_name: Yup.string(),
+    last_name: Yup.string(),
+    email: Yup.string().email(true).required(true),
+    password: Yup.string(),
     profesion: Yup.string().required(true),
     experiencia: Yup.number().required(true),
   }
