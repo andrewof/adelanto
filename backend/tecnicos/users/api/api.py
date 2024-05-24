@@ -1,21 +1,21 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
-from django.contrib.auth.hashers import make_password
 
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .serializers import UserSerializer, ClienteSerializer, TecnicoSerializer
 
+from django.contrib.auth.hashers import make_password
+
+
 class CustomTokenObtainPairView(TokenObtainPairView):
-    pass
+  pass
 
 class UserViewSet(ModelViewSet):
-  permission_classes = [IsAdminUser]
   serializer_class = UserSerializer
-  queryset = serializer_class.Meta.model.objects.filter(is_active= True)
+  queryset = serializer_class.Meta.model.objects.filter(is_active = True)
 
   def create(self, request, *args, **kwargs):
     request.data['password'] = make_password(request.data['password'])
@@ -32,7 +32,7 @@ class UserViewSet(ModelViewSet):
 
 class UserView(APIView):
   permission_classes = [IsAuthenticated]
-  
+
   def get(self, request):
     user_serializer = UserSerializer(request.user)
     return Response(user_serializer.data)
@@ -40,7 +40,7 @@ class UserView(APIView):
 
 class ClienteViewSet(ModelViewSet):
   serializer_class = ClienteSerializer
-  queryset = serializer_class.Meta.model.objects.filter(is_active= True)
+  queryset = serializer_class.Meta.model.objects.filter(is_active = True)
 
   def create(self, request, *args, **kwargs):
     request.data['password'] = make_password(request.data['password'])
@@ -57,7 +57,7 @@ class ClienteViewSet(ModelViewSet):
 
 class TecnicoViewSet(ModelViewSet):
   serializer_class = TecnicoSerializer
-  queryset = serializer_class.Meta.model.objects.filter(is_active= True)
+  queryset = serializer_class.Meta.model.objects.filter(is_active = True)
 
   def create(self, request, *args, **kwargs):
     request.data['password'] = make_password(request.data['password'])
