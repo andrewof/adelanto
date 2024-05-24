@@ -24,6 +24,11 @@
       td {
         border: none !important;
         padding: 10px !important;
+
+        .ui.image {
+          width: 100px !important;
+          height: 60px !important;
+        }
       }
 
       .ui.button {

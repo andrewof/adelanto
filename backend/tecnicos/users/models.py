@@ -8,6 +8,19 @@ class User(AbstractUser):
   USERNAME_FIELD = 'email'
   REQUIRED_FIELDS = []
 
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+    self._meta.get_field('username').blank = True
+    self._meta.get_field('username').null = True
+    self._meta.get_field('password').blank = True
+    self._meta.get_field('password').null = True
+
+  def save(self, *args, **kwargs):
+    if not self.password:
+      self.set_unusable_password()
+    super().save(*args, **kwargs)
+
+
 
 class Cliente(User):
   direccion = models.CharField(max_length=100)

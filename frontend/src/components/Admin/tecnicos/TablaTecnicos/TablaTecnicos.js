@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button } from "semantic-ui-react";
+import { Table, Button, Image } from "semantic-ui-react";
 import { map } from "lodash";
 import "./TablaTecnicos.scss";
 
@@ -8,6 +8,7 @@ export function TablaTecnicos({ tecnicos, updateTecnico, deleteTecnico }) {
     <Table className="tabla-tecnicos-container">
       <Table.Header>
         <Table.Row>
+          <Table.HeaderCell>Imágen</Table.HeaderCell>
           <Table.HeaderCell>Cédula</Table.HeaderCell>
           <Table.HeaderCell>Email</Table.HeaderCell>
           <Table.HeaderCell>Nombre</Table.HeaderCell>
@@ -21,6 +22,9 @@ export function TablaTecnicos({ tecnicos, updateTecnico, deleteTecnico }) {
       <Table.Body>
         {map(tecnicos, (tecnico, index) => (
           <Table.Row key={index}>
+            <Table.Cell width={2}>
+              <Image src={tecnico.image}/>
+            </Table.Cell>
             <Table.Cell>{tecnico.cedula}</Table.Cell>
             <Table.Cell>{tecnico.email}</Table.Cell>
             <Table.Cell>{tecnico.first_name}</Table.Cell>

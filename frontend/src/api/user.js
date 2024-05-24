@@ -81,14 +81,24 @@ export async function getTecnicosApi(token) {
 
 export async function setTecnicoApi(data, token) {
   try {
+    const formData = new FormData();
+    formData.append('cedula', data.cedula)
+    formData.append('email', data.email);
+    formData.append('first_name', data.first_name);
+    formData.append('last_name', data.last_name);
+    formData.append('is_active', data.is_active);
+    formData.append('data.is_staff', data.is_staff);
+    formData.append('image', data.image);
+    formData.append('profesion', data.profesion);
+    formData.append('experiencia', data.experiencia);
+
     const url = `${BASE_API}/api/tecnicos/`;
     const params = {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
       },
-      body: JSON.stringify(data),
+      body: formData,
     };
 
     const response = await fetch(url, params);

@@ -1,5 +1,10 @@
 .registro-tecnicos-form {
 
+  .ui.image {
+    margin: 15px 0 !important;
+    border: none !important;
+  }
+
   .ui.input input{
     background-color: transparent !important;
     color: #ffffff !important;
@@ -14,9 +19,9 @@
 
   .ui.button {
     background-color: #1475e1 !important;
-    width: 100%;
     color: #f0f0f0;
     transition: all .3s !important;
+    margin-bottom: 15px !important;
 
     &:hover {
       background-color: #105eb4 !important;

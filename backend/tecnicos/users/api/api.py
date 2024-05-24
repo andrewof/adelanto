@@ -16,18 +16,6 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 class UserViewSet(ModelViewSet):
   serializer_class = UserSerializer
   queryset = serializer_class.Meta.model.objects.filter(is_active = True)
-
-  def create(self, request, *args, **kwargs):
-    request.data['password'] = make_password(request.data['password'])
-    return super().create(request, *args, **kwargs)
-  
-  def partial_update(self, request, *args, **kwargs):
-    password = request.data['password']
-    if password:
-      request.data['password'] = make_password(request.data['password'])
-    else:
-      request.data['password'] = request.user.password
-    return super().partial_update(request, *args, **kwargs)
   
 
 class UserView(APIView):
@@ -41,32 +29,8 @@ class UserView(APIView):
 class ClienteViewSet(ModelViewSet):
   serializer_class = ClienteSerializer
   queryset = serializer_class.Meta.model.objects.filter(is_active = True)
-
-  def create(self, request, *args, **kwargs):
-    request.data['password'] = make_password(request.data['password'])
-    return super().create(request, *args, **kwargs)
-  
-  def partial_update(self, request, *args, **kwargs):
-    password = request.data['password']
-    if password:
-      request.data['password'] = make_password(request.data['password'])
-    else:
-      request.data['password'] = request.user.password
-    return super().partial_update(request, *args, **kwargs)
   
 
 class TecnicoViewSet(ModelViewSet):
   serializer_class = TecnicoSerializer
   queryset = serializer_class.Meta.model.objects.filter(is_active = True)
-
-  def create(self, request, *args, **kwargs):
-    request.data['password'] = make_password(request.data['password'])
-    return super().create(request, *args, **kwargs)
-  
-  def partial_update(self, request, *args, **kwargs):
-    password = request.data['password']
-    if password:
-      request.data['password'] = make_password(request.data['password'])
-    else:
-      request.data['password'] = request.user.password
-    return super().partial_update(request, *args, **kwargs)

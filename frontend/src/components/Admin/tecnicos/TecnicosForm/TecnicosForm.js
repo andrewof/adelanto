@@ -1,12 +1,27 @@
-import React from "react";
-import { Form, Button } from "semantic-ui-react";
+import React, { useCallback, useState } from "react";
+import { Form, Button, Image } from "semantic-ui-react";
+import { useDropzone } from "react-dropzone";
 import { useFormik } from "formik";
 import  * as Yup from "yup";
 import { useUser } from "../../../../hooks";
 import "./TecnicosForm.scss";
 
 export function TecnicosForm({ onClose, onRefetch, titleBtn, tecnico }) {
+  const [previewImage, setPreviewImage] = useState(null);
   const { setTecnico, updateTecnico } = useUser();
+
+  const onDrop = useCallback(async (acceptedFiled) => {
+    const file = acceptedFiled[0];
+    await formik.setFieldValue("image", file)
+    setPreviewImage(URL.createObjectURL(file))
+  },[])
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: 'image/jpeg, image/png',
+    noKeyboard: true,
+    multiple: false,
+    onDrop,
+  });
 
   const formik = useFormik({
     initialValues: initialValues(tecnico),
@@ -51,6 +66,13 @@ export function TecnicosForm({ onClose, onRefetch, titleBtn, tecnico }) {
         onChange={formik.handleChange}
         error={formik.errors.password}
       />
+
+      <Button type="button" {...getRootProps()} color={formik.errors.image && "red"}>
+        Subir imágen
+      </Button>
+      <input {...getInputProps()} />
+      <Image src={previewImage} />
+
       <Form.Input name="profesion" placeholder="Profesión" 
         value={formik.values.profesion}
         onChange={formik.handleChange}
@@ -62,7 +84,7 @@ export function TecnicosForm({ onClose, onRefetch, titleBtn, tecnico }) {
         error={formik.errors.experiencia}
       />
 
-      <Button type="submit" content={titleBtn}/>
+      <Button type="submit" fluid content={titleBtn} />
     </Form>
   )
 }
@@ -70,14 +92,15 @@ export function TecnicosForm({ onClose, onRefetch, titleBtn, tecnico }) {
 function initialValues(tecnico) {
   return {
     cedula: tecnico?.cedula || "",
+    email: tecnico?.email || "",
     first_name: tecnico?.first_name || "",
     last_name: tecnico?.last_name || "",
-    email: tecnico?.email || "",
     password: "",
+    is_active: true,
+    is_staff: false,
+    image: tecnico?.image || "",
     profesion: tecnico?.profesion || "",
     experiencia: tecnico?.experiencia || "",
-    is_active: true,
-    is_staff: false
   }
 }
 
