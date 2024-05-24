@@ -1,12 +1,17 @@
 import React from 'react';
+import { Navbar } from "../../components/Clientes";
 import './ClientLayout.scss';
 
 export function ClientLayout({ children }) {
   return (
     <div className="cliente-layout">
-      <h2>ClientLayout</h2>
+      <div>
+        <Navbar/>
+      </div>
 
-      {children}
+      <div className="body">
+        {children}
+      </div>
     </div>
   )
 }

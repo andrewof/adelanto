@@ -18,7 +18,7 @@ export function Navbar() {
 
   return (
     <Menu fixed="top" className="navbar-menu">
-      <Menu.Item as={Link} to={'/admin'} active={pathname === '/admin'}
+      <Menu.Item as={Link} to={'/admin/lista-clientes'} active={pathname === '/admin'}
         className="navbar-menu-logo" 
       >
         <Image src={image}/>
