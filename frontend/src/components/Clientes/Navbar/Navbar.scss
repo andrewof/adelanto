@@ -10,33 +10,29 @@
     margin-left: 3vh;
   }
   
-  a.item {
+  .item {
     color: #fff !important;
-    font-weight: 400 !important;
+    font-weight: 600 !important;
 
     &:hover {
       color: #1475e1 !important;
-      font-weight: 800 !important;
+      font-weight: bold !important;
     }
   }
 
   .right.menu {
     margin-left: 80px !important;
+    margin-right: 40px !important;
 
-    .item {
-      color: #fff !important;
-      font-weight: 400 !important;
-
-      .ui.button {
+      .navbar-button {
         background-color: transparent !important;
         color: #ffffff !important;
         transition: all .3s !important;
       }
 
-      .ui.button:hover {
+      .button:hover {
         background-color: #f0f0f0 !important;
         color: #1475e1 !important;
       }
-    }
   }
 }

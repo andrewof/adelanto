@@ -1,0 +1,36 @@
+.title-section-principal {
+  text-align: center;
+}
+
+.custom-grid .column {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+.custom-card {
+  height: 400px;
+  padding: 20px !important; 
+  background-color: #0f212e !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 30px !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+  transition: all .3s !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important;
+  }
+
+  .card-header {
+    color: #f0f0f0 !important;
+    margin-bottom: 30px;
+  }
+
+  .card-description {
+    color: #f0f0f0 !important;
+  }
+}
+
