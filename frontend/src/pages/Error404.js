@@ -1,9 +1,10 @@
 import React from 'react';
+import "./Error404.scss";
 
 export function Error404() {
   return (
-    <div>
-      <h2>Error404</h2>
+    <div className='error'>
+      <h2 className='title'>¡Página no encontrada!</h2>
     </div>
   )
 }

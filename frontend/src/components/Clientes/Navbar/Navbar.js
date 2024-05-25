@@ -19,7 +19,10 @@ export function Navbar() {
       </Menu.Menu>
 
       <Menu.Menu position="right">
-        <Button content="Ingresar" className="navbar-button"/>
+        <Button content="Ingresar" 
+          className="navbar-button"
+          as={Link} to={"/login"}
+        />
       </Menu.Menu>
     </Menu>
   )
