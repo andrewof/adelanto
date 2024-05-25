@@ -9,9 +9,7 @@ export function ClientLayout({ children }) {
         <Navbar/>
       </div>
 
-      <div className="body">
-        {children}
-      </div>
+      { children }
     </div>
   )
 }

@@ -17,8 +17,8 @@ function initialValues() {
 
 function validateSchema() {
   return {
-    email: Yup.string().email(true).required("Correo electrónico requerido"),
-    password: Yup.string().required("Contraseña requerida")
+    email: Yup.string().email(true).required(true),
+    password: Yup.string().required(true)
   }
 }
 
