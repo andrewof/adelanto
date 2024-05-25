@@ -1,11 +1,13 @@
 import React from 'react';
 import { Navbar } from "../../components/Admin"
-import { LoginAdmin, HomeAdmin } from '../../pages/Admin';
+import { LoginAdmin } from '../../pages/Admin';
 import { useAuth } from "../../hooks";
 import "./AdminLayout.scss";
 
 export function AdminLayout({ children }) {
   const { auth } = useAuth();
+
+  console.log(auth)
 
   if (!auth || !auth.me || !auth.me.is_staff) return <LoginAdmin />
 

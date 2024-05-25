@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { loginApi } from "../../../api/user";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../hooks";
+import { useNavigate } from "react-router-dom";
 import "./LoginPrincipal.scss";
 
 function initialValues() {
@@ -24,6 +25,7 @@ function validateSchema() {
 
 export function LoginForm() {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -35,6 +37,7 @@ export function LoginForm() {
         const { access } = response;
         console.log(access);
         login(access);
+        navigate("/");
       } catch (error) {
         toast.error(error.message)
       }
