@@ -34,3 +34,4 @@ class ClienteViewSet(ModelViewSet):
 class TecnicoViewSet(ModelViewSet):
   serializer_class = TecnicoSerializer
   queryset = serializer_class.Meta.model.objects.filter(is_active = True)
+

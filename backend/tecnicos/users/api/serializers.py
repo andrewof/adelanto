@@ -31,6 +31,12 @@ class ClienteSerializer(serializers.ModelSerializer):
         if 'password' in validated_data:
             validated_data['password'] = make_password(validated_data.get('password'))
         return super().update(instance, validated_data)
+    
+
+class ClienteAsoService(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = ['first_name', 'last_name']
 
 
 class TecnicoSerializer(serializers.ModelSerializer):
@@ -46,3 +52,11 @@ class TecnicoSerializer(serializers.ModelSerializer):
         if 'password' in validated_data:
             validated_data['password'] = make_password(validated_data.get('password'))
         return super().update(instance, validated_data)
+    
+
+class TecnicoAsoService(serializers.ModelSerializer):
+    class Meta:
+        model = Tecnico
+        fields = ['first_name', 'last_name']
+
+
