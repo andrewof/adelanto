@@ -1,5 +1,4 @@
 import { BASE_API } from "../utils/constant";
-import axios from "axios";
 
 // Petición para login
 export async function loginApi(formValue) {

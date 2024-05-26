@@ -9,10 +9,10 @@ export function CardTecnicos({ tecnicos, openModal }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = (tecnico) => {
     if (auth) {
       console.log("Agendando");
-      openModal();
+      openModal(tecnico);
     } else {
       navigate("/login")
     }
@@ -27,7 +27,7 @@ export function CardTecnicos({ tecnicos, openModal }) {
             <Card.Header className="card-header">{tecnico.first_name} {tecnico.last_name}</Card.Header>
             <Card.Description className="card-description"><strong>Profesión:</strong> {tecnico.profesion}</Card.Description>
             <Card.Description className="card-description"><strong>Experiencia:</strong> {tecnico.experiencia} años</Card.Description>
-            <Button content="Agendar" className="btn-card-tecnicos" onClick={handleClick}/>
+            <Button content="Agendar" className="btn-card-tecnicos" onClick={() => handleClick(tecnico)}/>
           </Card.Content>
         </Card>
       ))}

@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useUser } from "../../../hooks";
-import { CardTecnicos, ModalSetServices } from "../../../components/Clientes";
+import { useUser, useAuth } from "../../../hooks";
+import { CardTecnicos, ModalSetServices, FormServices } from "../../../components/Clientes";
 import { Loader } from "semantic-ui-react";
 import "./TecnicosDisponibles.scss";
 
 export function TecnicosDisponibles() {
   const [openModal, setOpenModal] = useState(null);
+  const [selectedTecnico, setSelectedTecnico] = useState(null);
   const { loading, tecnicos, getTecnicos } = useUser();
+  const { auth } = useAuth();
 
   useEffect(() => {
     getTecnicos();
   }, [])
 
-  const openCloseModal = () => setOpenModal((prevState) => !prevState)
+  const openCloseModal = (tecnico) => {
+    setSelectedTecnico(tecnico);
+    setOpenModal((prevState) => !prevState);
+  };
 
   return (
     <div className="tecnicos-disponibles">
@@ -26,7 +31,9 @@ export function TecnicosDisponibles() {
       <ModalSetServices
         title="Agendar servicio"
         open={openModal} 
-        onClose={openCloseModal}
+        onClose={() => setOpenModal(false)}
+        content={selectedTecnico && (<FormServices tecnico={selectedTecnico} cliente={auth} 
+          onClose={() => setOpenModal(false)}/>)}
       />
     </div>
   )
