@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal } from "semantic-ui-react";
+import  "./ModalSetServices.scss";
 
 export function ModalSetServices({ show, size, title, content, open, onClose }) {
   return (

@@ -1,0 +1,35 @@
+.modal-services {
+  border-radius: 30px !important;
+  overflow: hidden !important;
+  height: 90vh !important;
+  padding: 30px !important;
+  background-color: #0f212e !important;
+  
+  .ui.modal {
+    // background-color: #0f212e !important;
+    overflow: hidden !important;
+    border: none !important;
+    margin-bottom: 400px !important;
+  }
+
+  .header {
+    background-color: transparent !important; 
+    color: #f0f0f0 !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+    font-size: 30px !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px !important; 
+  }
+
+  .content {
+    background-color: #0f212e !important; 
+    color: #f0f0f0 !important;
+    padding: 15px !important; 
+    overflow-y: auto !important;
+    max-height: calc(100vh - 120px) !important;
+  }
+}
+
+.ui.dimmer.modals {
+  background-color: transparent !important;
+}
