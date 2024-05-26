@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getMeApi, getClientesApi, getTecnicosApi,
-  setTecnicoApi, updateTecnicoApi, deleteTecnicoApi
+  setTecnicoApi, updateTecnicoApi, deleteTecnicoApi, getTecnicosPublicApi
  } from "../api/user";
 import { useAuth } from "../hooks";
 
@@ -35,7 +35,7 @@ export function useUser() {
   const getTecnicos = async () => {
     try {
       setLoading(true);
-      const response = await getTecnicosApi(auth.token);
+      const response = auth ? await getTecnicosApi(auth.token) : await getTecnicosPublicApi();
       setLoading(false);
       setTecnicos(response);
     } catch (error) {

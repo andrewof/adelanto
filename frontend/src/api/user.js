@@ -1,4 +1,5 @@
 import { BASE_API } from "../utils/constant";
+import axios from "axios";
 
 // Petición para login
 export async function loginApi(formValue) {
@@ -76,6 +77,27 @@ export async function getTecnicosApi(token) {
     return result;
   } catch (error) {
     throw error
+  }
+}
+
+export async function getTecnicosPublicApi() {
+  try {
+    const url = `${BASE_API}/api/tecnicos/`;
+    const params = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const response = await fetch(url, params);
+    if (response.status !== 200) {
+      throw new Error("Error al obtener los técnicos");
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw error;
   }
 }
 
