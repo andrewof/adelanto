@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class User(AbstractUser):
+  username = models.CharField(max_length=150, unique=True, null=True, blank=True)
   email = models.EmailField(unique=True)
   cedula = models.CharField(max_length=25, unique=True, null=True)
 

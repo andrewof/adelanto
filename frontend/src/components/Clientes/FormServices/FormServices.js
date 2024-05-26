@@ -2,16 +2,20 @@ import React from "react";
 import { Button, Form } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useServices } from "../../../hooks/useServices"
 import "./FormServices.scss";
 
 export function FormServices({ tecnico, cliente, onClose }) {
+  const { setServices } = useServices();
+
   const formik = useFormik({
     initialValues: initialValues(tecnico, cliente),
     validationSchema: Yup.object(schema()),
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        console.log(formValue);
+        console.log(formValue)
+        await setServices(formValue);
         onClose();
       } catch (error) {
         throw error

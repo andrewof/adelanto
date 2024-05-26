@@ -15,3 +15,18 @@ class ServiceDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Services
         fields = ['id', 'cliente_first_name', 'cliente_last_name', 'tecnico_first_name', 'tecnico_last_name', 'descripcion', 'hora_actual', 'hora_vis']
+
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        # Formatear hora_actual
+        hora_actual = instance.hora_actual.strftime("%A %d de %B %Y a las %I:%M %p")
+
+        # Formatear hora_vis
+        hora_vis = instance.hora_vis.strftime("%A %d de %B %Y a las %I:%M %p")
+
+        representation['hora_actual'] = hora_actual
+        representation['hora_vis'] = hora_vis
+
+        return representation

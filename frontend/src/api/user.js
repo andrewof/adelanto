@@ -107,8 +107,9 @@ export async function setTecnicoApi(data, token) {
     formData.append('email', data.email);
     formData.append('first_name', data.first_name);
     formData.append('last_name', data.last_name);
+    formData.append('password', data.password)
     formData.append('is_active', data.is_active);
-    formData.append('data.is_staff', data.is_staff);
+    formData.append('is_staff', data.is_staff);
     formData.append('image', data.image);
     formData.append('profesion', data.profesion);
     formData.append('experiencia', data.experiencia);
