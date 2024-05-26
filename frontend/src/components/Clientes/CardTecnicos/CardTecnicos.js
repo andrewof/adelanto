@@ -5,13 +5,14 @@ import { useAuth } from "../../../hooks";
 import { useNavigate } from "react-router-dom";
 import "./CardTecnicos.scss";
 
-export function CardTecnicos({ tecnicos }) {
+export function CardTecnicos({ tecnicos, openModal }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
   const handleClick = () => {
     if (auth) {
       console.log("Agendando");
+      openModal();
     } else {
       navigate("/login")
     }
