@@ -1,6 +1,5 @@
 import React from "react";
-import { SectionPrincipal, SectionSecundario,
-  Footer
+import { SectionPrincipal, SectionSecundario
  } from "../../../components/Clientes";
 import "./Home.scss";
 
@@ -9,7 +8,6 @@ export function Home() {
     <div className="home">
       <SectionPrincipal />
       <SectionSecundario />
-      <Footer />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar } from "../../components/Clientes";
+import { Navbar, Footer } from "../../components/Clientes";
 import './ClientLayout.scss';
 
 export function ClientLayout({ children }) {
@@ -11,6 +11,10 @@ export function ClientLayout({ children }) {
 
       <div className='content'>
         { children }
+      </div>
+
+      <div>
+        <Footer />
       </div>
     </div>
   )
