@@ -59,4 +59,3 @@ class TecnicoAsoService(serializers.ModelSerializer):
         model = Tecnico
         fields = ['first_name', 'last_name']
 
-

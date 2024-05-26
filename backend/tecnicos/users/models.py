@@ -1,11 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser 
 
+# Create your models here.
 class User(AbstractUser):
-  username = models.CharField(max_length=150, unique=True, null=True, blank=True)
-  password = models.CharField(max_length=128, null=True, blank=True)
-  cedula = models.CharField(max_length=25, unique=True, null=True)
   email = models.EmailField(unique=True)
+  cedula = models.CharField(max_length=25, unique=True, null=True)
 
   USERNAME_FIELD = 'email'
   REQUIRED_FIELDS = []
@@ -14,14 +13,6 @@ class User(AbstractUser):
     super().__init__(*args, **kwargs)
     self._meta.get_field('username').blank = True
     self._meta.get_field('username').null = True
-    self._meta.get_field('password').blank = True
-    self._meta.get_field('password').null = True
-
-  def save(self, *args, **kwargs):
-    if not self.password:
-      self.set_unusable_password()
-    super().save(*args, **kwargs)
-
 
 
 class Cliente(User):
@@ -41,4 +32,3 @@ class Tecnico(User):
   class Meta:
     verbose_name = ("Tecnico")
     verbose_name_plural = ("Tecnicos")
-

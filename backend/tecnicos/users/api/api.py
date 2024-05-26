@@ -7,8 +7,6 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .serializers import UserSerializer, ClienteSerializer, TecnicoSerializer
 
-from django.contrib.auth.hashers import make_password
-
 class CustomTokenObtainPairView(TokenObtainPairView):
   pass
 
@@ -40,4 +38,3 @@ class TecnicoViewSet(ModelViewSet):
   permission_classes = [IsAuthenticatedOrReadOnly]
   serializer_class = TecnicoSerializer
   queryset = serializer_class.Meta.model.objects.filter(is_active = True)
-

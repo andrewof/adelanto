@@ -1,8 +1,14 @@
 from rest_framework.viewsets import ModelViewSet
 
-from .serializers import ServicesSerializer
+from services.models import Services
+from .serializers import ServiceSerializer, ServiceDetailSerializer
 
 
 class ServiciesViewSet(ModelViewSet):
-  serializer_class = ServicesSerializer
-  queryset = serializer_class.Meta.model.objects.all()
+  serializer_class = ServiceSerializer
+  queryset = Services.objects.all()
+
+  def get_serializer_class(self):
+    if self.action == 'list':
+      return ServiceDetailSerializer
+    return ServiceSerializer

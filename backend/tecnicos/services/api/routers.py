@@ -7,4 +7,3 @@ router_services = DefaultRouter()
 router_services.register(
   prefix='servicios', basename='servicios', viewset= ServiciesViewSet
 )
-
