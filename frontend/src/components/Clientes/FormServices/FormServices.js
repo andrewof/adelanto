@@ -49,7 +49,7 @@ export function FormServices({ tecnico, cliente, onClose }) {
 
 function initialValues(tecnico, cliente) {
   return {
-    cliente: cliente.id,
+    cliente: cliente.me.id,
     tecnico: tecnico.id,
     descripcion: "",
     hora_vis: "",
@@ -69,6 +69,6 @@ function initialValues(tecnico, cliente) {
 function schema() {
   return {
     descripcion: Yup.string().required(true),
-    hora_vis: Yup.date().required(true)
+    hora_vis: Yup.date().required(true).min(new Date(), 'La fecha debe ser igual o posterior a la fecha actual')
   }
 } 

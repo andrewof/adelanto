@@ -32,7 +32,7 @@ export function TecnicosDisponibles() {
         title="Agendar servicio"
         open={openModal} 
         onClose={() => setOpenModal(false)}
-        content={selectedTecnico && (<FormServices tecnico={selectedTecnico} cliente={auth.me} 
+        content={selectedTecnico && (<FormServices tecnico={selectedTecnico} cliente={auth} 
           onClose={() => setOpenModal(false)}/>)}
       />
     </div>
