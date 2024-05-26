@@ -12,7 +12,7 @@ export function TecnicosDisponibles() {
   }, [])
 
   return (
-    <div>
+    <div className="tecnicos-disponibles">
       <h1>TecnicosCard</h1>
       {loading ? (
         <Loader />

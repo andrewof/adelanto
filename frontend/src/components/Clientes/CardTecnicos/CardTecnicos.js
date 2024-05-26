@@ -1,17 +1,32 @@
 import React from "react";
-import { Card, Image } from "semantic-ui-react";
+import { Card, Image, Button } from "semantic-ui-react";
 import { map } from "lodash";
+import { useAuth } from "../../../hooks";
+import { useNavigate } from "react-router-dom";
 import "./CardTecnicos.scss";
 
 export function CardTecnicos({ tecnicos }) {
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (auth) {
+      console.log("Agendando");
+    } else {
+      navigate("/login")
+    }
+  }
+
   return (
-    <Card.Group>
+    <Card.Group className="custom-card-group">
       {map(tecnicos, (tecnico, index) => (
-        <Card key={index}>
+        <Card key={index} className="card-custom">
           <Image src={tecnico.image}/>
           <Card.Content>
-            <Card.Header>{tecnico.email}</Card.Header>
-            <Card.Description>{tecnico.profesion}</Card.Description>
+            <Card.Header className="card-header">{tecnico.first_name} {tecnico.last_name}</Card.Header>
+            <Card.Description className="card-description"><strong>Profesión:</strong> {tecnico.profesion}</Card.Description>
+            <Card.Description className="card-description"><strong>Experiencia:</strong> {tecnico.experiencia} años</Card.Description>
+            <Button content="Agendar" className="btn-card-tecnicos" onClick={handleClick}/>
           </Card.Content>
         </Card>
       ))}

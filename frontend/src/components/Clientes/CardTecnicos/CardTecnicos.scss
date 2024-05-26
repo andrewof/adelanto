@@ -1,0 +1,37 @@
+.custom-card-group {
+  padding: 14px !important;
+}
+
+.card-custom {
+  background-color: #0f212e !important;
+  box-shadow: none !important;
+  border-radius: 25px !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+  transition: all .3s;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+  }
+  
+  .card-header {
+    color: #f0f0f0 !important;
+    text-align: center;
+  }
+
+  .card-description {
+    color: #f0f0f0 !important;
+    margin-bottom: 0;
+  }
+
+  .btn-card-tecnicos {
+    margin-top: 15px;
+    background-color: #1475e1 !important;
+    color: #f0f0f0 !important;
+    transition: all .3s;
+
+    &:hover {
+      background-color: #105eb4 !important;
+      color: #f0f0f0 !important;
+    }
+  }
+}
