@@ -9,7 +9,9 @@ export function ClientLayout({ children }) {
         <Navbar/>
       </div>
 
-      { children }
+      <div className='content'>
+        { children }
+      </div>
     </div>
   )
 }
