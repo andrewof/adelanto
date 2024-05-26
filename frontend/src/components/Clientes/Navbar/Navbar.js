@@ -21,6 +21,14 @@ export function Navbar() {
       <Menu.Menu position="center">
         <Menu.Item as={Link} to={"/"} active={pathname === '/'}>INICIO</Menu.Item>
         <Menu.Item as={Link} to={"/tecnicos"} active={pathname === '/tecnicos'}>TÉCNICOS</Menu.Item>
+        {auth ? (
+          <>
+            <Menu.Item as={Link} to={"/mis-servicios"} active={pathname === '/mis-servicios'}>MIS SERVICIOS</Menu.Item>
+            <Menu.Item as={Link} to={"/mis-datos"} active={pathname === '/mis-datos'}>MIS DATOS</Menu.Item>
+          </>
+        ):(
+          <span />
+        )}
       </Menu.Menu>
 
       <Menu.Menu position="right">
