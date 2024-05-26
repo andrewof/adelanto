@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu, Image, Button } from "semantic-ui-react";
 import image from "../../../media/logo192.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks";
 import "./Navbar.scss";
 
@@ -9,8 +9,14 @@ import "./Navbar.scss";
 export function Navbar() {
   const { auth, logout } = useAuth();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   // console.log(auth)
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  }
  
   return (
     <Menu fixed="top" className="navbar-menu">
@@ -36,7 +42,7 @@ export function Navbar() {
           <Menu.Item>
             <Button content="Salir" 
               className="navbar-button"
-              onClick={logout}
+              onClick={handleLogout}
             />
           </Menu.Item>
         ):(
