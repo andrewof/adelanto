@@ -33,14 +33,14 @@ export function FormServices({ tecnico, cliente, onClose }) {
       />
       <input
         type="datetime-local"
-        id="fechaHora_vis"
-        name="fechaHora_vis"
-        value={formik.values.fechaHora_vis}
+        id="hora_vis"
+        name="hora_vis"
+        value={formik.values.hora_vis}
         onChange={formik.handleChange}
-        className={formik.errors.fechaHora_vis ? "error" : ""}
+        className={formik.errors.hora_vis ? "error" : ""}
       />
-      {formik.touched.fechaHora_vis && formik.errors.fechaHora_vis && (
-        <span style={{ color: "red" }}>{formik.errors.fechaHora_vis}</span>
+      {formik.touched.hora_vis && formik.errors.hora_vis && (
+        <span style={{ color: "red" }}>{formik.errors.hora_vis}</span>
       )}
       <Button type="submit" fluid content="Agendar"/>
     </Form>
@@ -49,22 +49,26 @@ export function FormServices({ tecnico, cliente, onClose }) {
 
 function initialValues(tecnico, cliente) {
   return {
-    cliente: {
-      first_name: cliente.first_name,
-      last_name: cliente.last_name,
-    },
+    cliente: cliente.id,
+    tecnico: tecnico.id,
     descripcion: "",
-    fechaHora_vis: "",
-    tecnico: {
-      first_name: tecnico.first_name,
-      last_name: tecnico.last_name,
-    },
+    hora_vis: "",
+    // cliente: {
+    //   first_name: cliente.first_name,
+    //   last_name: cliente.last_name,
+    // },
+    // descripcion: "",
+    // fechaHora_vis: "",
+    // tecnico: {
+    //   first_name: tecnico.first_name,
+    //   last_name: tecnico.last_name,
+    // },
   }
 }
 
 function schema() {
   return {
     descripcion: Yup.string().required(true),
-    fechaHora_vis: Yup.date().required(true)
+    hora_vis: Yup.date().required(true)
   }
 } 
