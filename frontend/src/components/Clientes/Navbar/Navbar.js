@@ -10,7 +10,7 @@ export function Navbar() {
   const { auth, logout } = useAuth();
   const { pathname } = useLocation();
 
-  console.log(auth)
+  // console.log(auth)
  
   return (
     <Menu fixed="top" className="navbar-menu">

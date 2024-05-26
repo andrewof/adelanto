@@ -18,7 +18,7 @@ export function AuthProvaider({ children }) {
       if (token) {
         const me = await getMe(token);
         setAuth({ token, me })
-        console.log(me);
+        // console.log(me);
       } else {
         setAuth(null);
       }
@@ -28,6 +28,7 @@ export function AuthProvaider({ children }) {
   const login = async (token) => {
     setToken(token);
     const me = await getMe(token);
+    // console.log(me)
     setAuth({ token, me })
   }
 

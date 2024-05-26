@@ -11,7 +11,7 @@ import "./LoginPrincipal.scss";
 function initialValues() {
   return {
     email: "",
-    password: ""
+    password: "",
   }
 }
 
@@ -24,7 +24,7 @@ function validateSchema() {
 
 
 export function LoginForm() {
-  const { login } = useAuth();
+  const { login} = useAuth();
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -37,7 +37,7 @@ export function LoginForm() {
         const { access } = response;
         console.log(access);
         login(access);
-        navigate("/");
+        navigate("/")
       } catch (error) {
         toast.error(error.message)
       }
