@@ -12,9 +12,7 @@ export function TecnicosDisponibles() {
     getTecnicos();
   }, [])
 
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  }
+  const openCloseModal = () => setOpenModal((prevState) => !prevState)
 
   return (
     <div className="tecnicos-disponibles">
@@ -22,10 +20,14 @@ export function TecnicosDisponibles() {
       {loading ? (
         <Loader active inline="centered" className="loader"/>
       ):(
-        <CardTecnicos tecnicos={tecnicos} openModal={handleOpenModal}/>
+        <CardTecnicos tecnicos={tecnicos} openModal={openCloseModal}/>
       )}
 
-      <ModalSetServices open={openModal}/>
+      <ModalSetServices
+        title="Agendar servicio"
+        open={openModal} 
+        onClose={openCloseModal}
+      />
     </div>
   )
 }
