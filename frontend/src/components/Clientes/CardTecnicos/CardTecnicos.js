@@ -22,7 +22,7 @@ export function CardTecnicos({ tecnicos, openModal }) {
     <Card.Group className="custom-card-group">
       {map(tecnicos, (tecnico, index) => (
         <Card key={index} className="card-custom">
-          <Image src={tecnico.image}/>
+          <Image src={tecnico.image} className="card-image"/>
           <Card.Content>
             <Card.Header className="card-header">{tecnico.first_name} {tecnico.last_name}</Card.Header>
             <Card.Description className="card-description"><strong>Profesión:</strong> {tecnico.profesion}</Card.Description>

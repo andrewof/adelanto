@@ -34,4 +34,11 @@
       color: #f0f0f0 !important;
     }
   }
+
+  .card-image {
+    width: 100% !important; 
+    height: 64% !important; 
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
 }
