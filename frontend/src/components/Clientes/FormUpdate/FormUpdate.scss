@@ -1,0 +1,30 @@
+.form-update {
+
+  .ui.image {
+    margin: 15px 0 !important;
+    border: none !important;
+  }
+
+  .ui.input input{
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid #b1bad3 !important;
+    padding: 10px !important;
+
+    &:focus {
+      background-color: #1a2c38 !important;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+    }
+  }
+
+  .ui.button {
+    background-color: #1475e1 !important;
+    color: #f0f0f0;
+    transition: all .3s !important;
+    margin-bottom: 15px !important;
+
+    &:hover {
+      background-color: #105eb4 !important;
+    }
+  }
+}

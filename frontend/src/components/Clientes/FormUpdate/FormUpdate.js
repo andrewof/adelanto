@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useFormik } from "formik";
+import { toast } from "react-toastify";
 import *  as Yup from "yup";
 import { useUser } from "../../../hooks"
 import "./FormUpdate.scss";
@@ -20,7 +21,9 @@ export function FormUpdate({ cliente }) {
         const dataToSend = password ? formValue : restFormValue;
         // console.log(dataToSend)
         await updateClientes(cliente.me.id, dataToSend);
+        toast.success("Datos actualizados")
       } catch (error) {
+        toast.error("Los datos no fueron actualizados")
         throw error
       }
     }
