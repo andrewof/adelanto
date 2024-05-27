@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from users.models import User, Cliente, Tecnico
 
+from rest_framework_simplejwt.tokens import RefreshToken
+
 from django.contrib.auth.hashers import make_password
 
 class UserSerializer(serializers.ModelSerializer):
@@ -31,6 +33,23 @@ class ClienteSerializer(serializers.ModelSerializer):
         if 'password' in validated_data:
             validated_data['password'] = make_password(validated_data.get('password'))
         return super().update(instance, validated_data)
+    
+    
+class ClienteRegisterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = ['id', 'cedula', 'email', 'first_name', 'last_name', 'password', 'is_active', 'is_staff', 'direccion', 'codigo_postal']
+
+    def create(self, validated_data):
+        validated_data['password'] = make_password(validated_data.get('password'))
+        return super().create(validated_data)
+
+    def to_representation(self, instance):
+        refresh = RefreshToken.for_user(instance)
+        data = super().to_representation(instance)
+        data['refresh'] = str(refresh)
+        data['access'] = str(refresh.access_token)
+        return data
     
 
 class ClienteAsoService(serializers.ModelSerializer):

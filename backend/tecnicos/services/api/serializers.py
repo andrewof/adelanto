@@ -20,10 +20,8 @@ class ServiceDetailSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
 
-        # Formatear hora_actual
         hora_actual = instance.hora_actual.strftime("%A %d de %B %Y a las %I:%M %p")
 
-        # Formatear hora_vis
         hora_vis = instance.hora_vis.strftime("%A %d de %B %Y a las %I:%M %p")
 
         representation['hora_actual'] = hora_actual
