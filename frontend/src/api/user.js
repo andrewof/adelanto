@@ -61,6 +61,26 @@ export async function getClientesApi(token) {
   }
 }
 
+export async function updateClientesApi(id, data, token) {
+  try {
+    const url = `${BASE_API}/api/clientes/${id}/`;
+    const params = {
+      method: "PATCH",
+      headers: {
+        // Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data),
+    };
+    
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw error
+  }
+}
+
 
 export async function getTecnicosApi(token) {
   try {

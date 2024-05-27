@@ -13,11 +13,17 @@
   .item {
     color: #fff !important;
     font-weight: 600 !important;
+    transition: all .2s;
 
     &:hover {
       color: #1475e1 !important;
       font-weight: bold !important;
     }
+  }
+
+  .item.active {
+    color: #1475e1 !important;
+    font-weight: bold !important;
   }
 
   .right.menu {

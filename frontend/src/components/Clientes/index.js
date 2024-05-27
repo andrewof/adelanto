@@ -7,3 +7,4 @@ export * from "./LoginPrincipal";
 export * from "./CardTecnicos/CardTecnicos";
 export * from "./ModalSetServices";
 export * from "./FormServices";
+export * from "./FormUpdate";
