@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { loginApi } from "../../../api/user";
 import { toast } from "react-toastify";
-import { useAuth } from "../../../hooks";
+import { useAuth, useUser } from "../../../hooks";
 import { useNavigate } from "react-router-dom";
 import "./LoginPrincipal.scss";
 
@@ -23,8 +23,9 @@ function validateSchema() {
 }
 
 
-export function LoginForm() {
-  const { login} = useAuth();
+export function LoginForm({ auth }) {
+  const { login, } = useAuth();
+  const { getMe } = useUser();
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -35,9 +36,15 @@ export function LoginForm() {
       try {
         const response = await loginApi(formValue);
         const { access } = response;
-        console.log(access);
         login(access);
-        navigate("/")
+        const me = await getMe(access);
+        if (me.is_staff) {
+          navigate("/admin")
+        } else if (me.profesion) {
+          navigate("/tecnico")
+        } else {
+          navigate("/")
+        }
       } catch (error) {
         toast.error(error.message)
       }
