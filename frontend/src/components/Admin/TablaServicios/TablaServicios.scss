@@ -1,0 +1,36 @@
+.tabla-servicios-admin {
+  max-width: 75vw !important;
+  max-height: 100vh !important;
+  background-color: #0f212e !important;
+  color: #f0f0f0 !important;
+  font-weight: 700 !important;
+  border-radius: 30px !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
+  
+  thead {
+    tr {
+      text-align: center !important;
+      th {
+        text-align: center !important;
+        background-color: #f0f0f0 !important;
+        font-weight: 700 !important;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      text-align: center !important;
+
+      td {
+        border: none !important;
+        padding: 10px !important;
+
+        .ui.image {
+          width: 100px !important;
+          height: 60px !important;
+        }
+      }
+    }
+  }
+}

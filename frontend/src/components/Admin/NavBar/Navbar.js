@@ -35,6 +35,7 @@ export function Navbar() {
           >CLIENTES</Menu.Item>
         <Menu.Item as={Link} to={'/admin/lista-tecnicos'} active={pathname === '/admin/lista-tecnicos'}
         >TECNICOS</Menu.Item>
+        <Menu.Item as={Link} to={'/admin/lista-servicios'} active={pathname === '/admin/lista-servicios'}>SERVICIOS</Menu.Item>
       </Menu.Menu>
 
       <Menu.Menu position="right">
