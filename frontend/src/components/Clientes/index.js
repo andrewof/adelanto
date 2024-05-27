@@ -8,3 +8,4 @@ export * from "./CardTecnicos/CardTecnicos";
 export * from "./ModalSetServices";
 export * from "./FormServices";
 export * from "./FormUpdate";
+export * from "./tablaServicios";

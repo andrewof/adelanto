@@ -1,5 +1,5 @@
 import { ClientLayout, LoginLayoutGeneral } from "../layouts";
-import { Home, LoginHome, TecnicosDisponibles, UpdateDatos } from "../pages/Client";
+import { Home, LoginHome, TecnicosDisponibles, UpdateDatos, Servicios } from "../pages/Client";
 
 const routesClient = [
   {
@@ -21,6 +21,11 @@ const routesClient = [
     path: '/mis-datos',
     layout: ClientLayout,
     component: UpdateDatos,
+  },
+  {
+    path: '/mis-servicios',
+    layout: ClientLayout,
+    component: Servicios,
   }
 ]
 
