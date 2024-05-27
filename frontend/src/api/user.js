@@ -43,6 +43,32 @@ export async function getMeApi(token) {
   }
 }
 
+export async function registerClienteApi(data) {
+  try {
+    const url = `${BASE_API}/api/auth/register/`;
+    const params = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data),
+    };
+
+    const response = await fetch(url, params);
+    console.log(response);
+    if (response.status !== 200) {
+      const errorData = await response.json();
+      console.error('Error data:', errorData);
+      throw new Error("Error en el registro");
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw error
+  }
+}
+
 
 export async function getClientesApi(token) {
   try {

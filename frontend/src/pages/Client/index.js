@@ -3,3 +3,4 @@ export * from "./LoginHome/LoginHome";
 export * from "./TecnicosDisponibles";
 export * from "./UpdateDatos";
 export * from "./Servicios";
+export * from "./RegisterHome";

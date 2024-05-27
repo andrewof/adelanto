@@ -9,3 +9,4 @@ export * from "./ModalSetServices";
 export * from "./FormServices";
 export * from "./FormUpdate";
 export * from "./tablaServicios";
+export * from "./RegisterForm";

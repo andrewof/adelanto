@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getMeApi, getClientesApi, getTecnicosApi,
   setTecnicoApi, updateTecnicoApi, deleteTecnicoApi, getTecnicosPublicApi,
-  updateClientesApi
+  updateClientesApi, registerClienteApi
  } from "../api/user";
 import { useAuth } from "../hooks";
 
@@ -32,6 +32,17 @@ export function useUser() {
       setError(error)
     }
   };
+
+  const registerClientes = async (data) => {
+    try {
+      setLoading(true);
+      await registerClienteApi(data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  }
 
   const updateClientes = async (id, data) => {
     try {
@@ -101,5 +112,6 @@ export function useUser() {
     setTecnico,
     updateTecnico,
     deleteTecnico,
+    registerClientes,
   };
 }
