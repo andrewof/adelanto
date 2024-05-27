@@ -52,6 +52,19 @@ class ClienteRegisterSerializer(serializers.ModelSerializer):
         return data
     
 
+class ClienteSerializerWithToken(ClienteSerializer):
+    token = serializers.SerializerMethodField(read_only= True)
+
+    class Meta:
+        model = Cliente
+        fields = ['id', 'cedula', 'email', 'first_name', 'last_name', 'password', 'is_active', 'is_staff', 'direccion', 'codigo_postal', 'token']
+
+    def get_token(self, obj):
+        token = RefreshToken.for_user(obj)
+        return str(token.access_token)
+
+    
+
 class ClienteAsoService(serializers.ModelSerializer):
     class Meta:
         model = Cliente

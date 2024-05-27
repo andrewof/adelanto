@@ -1,5 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from .api import UserViewSet, UserView, CustomTokenObtainPairView, ClienteViewSet, TecnicoViewSet, RegisterView
+from .api import UserViewSet, UserView, CustomTokenObtainPairView, ClienteViewSet, TecnicoViewSet, RegistroClientes
 from django.urls import path
 
 
@@ -19,5 +19,5 @@ router.register(
 urlpatterns = [
   path('auth/login/', CustomTokenObtainPairView.as_view()),
   path('auth/me/', UserView.as_view()),
-  path('auth/register/', RegisterView.as_view()),
+  path('auth/register/', RegistroClientes),
 ]
