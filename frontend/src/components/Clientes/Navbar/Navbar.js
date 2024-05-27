@@ -11,6 +11,13 @@ export function Navbar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
+  const showUser = () => {
+    if (auth.me?.first_name && auth.me?.last_name) {
+      return `${auth.me.first_name} ${auth.me.last_name}`;
+    }
+    return auth.me?.email;
+  }
+
   const handleLogout = () => {
     logout();
     navigate("/");
@@ -37,12 +44,15 @@ export function Navbar() {
 
       <Menu.Menu position="right">
         {auth ? (
-          <Menu.Item>
-            <Button content="Salir" 
-              className="navbar-button"
-              onClick={handleLogout}
-            />
-          </Menu.Item>
+          <>
+            <Menu.Item>{ showUser() }</Menu.Item>
+            <Menu.Item>
+              <Button content="Salir" 
+                className="navbar-button"
+                onClick={handleLogout}
+              />
+            </Menu.Item>
+          </> 
         ):(
           <Button content="Ingresar" 
             className="navbar-button"

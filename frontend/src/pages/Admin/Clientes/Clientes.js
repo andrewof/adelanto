@@ -15,7 +15,7 @@ export function Clientes() {
     <div className="lista-clientes">
       <h2 className="title">Clientes</h2>
       {loading ? (
-        <Loader/>
+        <Loader active inline="centered" className="loader"/>
       ):(
         <TablaClientes clientes={clientes}/>
       )}

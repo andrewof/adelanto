@@ -50,7 +50,7 @@ export function Tecnicos() {
       <Button onClick={addTecnico}>Crear técnico</Button>
 
       {loading ? (
-        <Loader active inline="centered"/>
+        <Loader active inline="centered" className="loader"/>
       ):(
         <TablaTecnicos tecnicos={tecnicos} updateTecnico={updateTecnico} deleteTecnico={deleteTecnicos}/>
       )}

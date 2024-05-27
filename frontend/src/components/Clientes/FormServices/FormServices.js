@@ -2,7 +2,8 @@ import React from "react";
 import { Button, Form } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useServices } from "../../../hooks/useServices"
+import { useServices } from "../../../hooks/useServices";
+import { toast } from "react-toastify";
 import "./FormServices.scss";
 
 export function FormServices({ tecnico, cliente, onClose }) {
@@ -17,7 +18,9 @@ export function FormServices({ tecnico, cliente, onClose }) {
         console.log(formValue)
         await setServices(formValue);
         onClose();
+        toast.success("Servicio Agendado")
       } catch (error) {
+        toast.success("Ha ocurrido un error");
         throw error
       }
     }

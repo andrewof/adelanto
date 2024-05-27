@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import  * as Yup from "yup";
 import { useUser } from "../../../../hooks";
 import "./TecnicosForm.scss";
+import { toast } from "react-toastify";
 
 export function TecnicosForm({ onClose, onRefetch, titleBtn, tecnico }) {
   const [previewImage, setPreviewImage] = useState(null);
@@ -29,11 +30,12 @@ export function TecnicosForm({ onClose, onRefetch, titleBtn, tecnico }) {
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        if (tecnico) await updateTecnico(tecnico.id, formValue)
+        if (tecnico) await updateTecnico(tecnico.id, formValue) 
         else await setTecnico(formValue);
         onRefetch();
         onClose();
       } catch (error) {
+        toast.error("Ha habido un error");
         console.error(error)
       }
     }

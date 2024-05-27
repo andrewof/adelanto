@@ -7,6 +7,10 @@
   max-height: 100vh;
   padding: 3vh;
 
+  .ui.active.loader:after {
+    border-color: #105eb4 !important;
+  }
+
   .ui.button {
     margin: 10px 0 !important;
     background-color: #1475e1 !important;
@@ -19,6 +23,7 @@
   }
 
   .title {
+    color: #f0f0f0;
     font-size: 40px;
   }
 }
