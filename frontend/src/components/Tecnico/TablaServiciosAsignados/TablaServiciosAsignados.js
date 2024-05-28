@@ -12,7 +12,8 @@ export function TablaServiciosAsignados({ servicios }) {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>Cliente</Table.HeaderCell>
-          <Table.HeaderCell>direccion</Table.HeaderCell>
+          <Table.HeaderCell>Lugar encuentro</Table.HeaderCell>
+          <Table.HeaderCell>Descripción</Table.HeaderCell>
           <Table.HeaderCell>fecha_solicitud</Table.HeaderCell>
           <Table.HeaderCell>fecha_visita</Table.HeaderCell>
         </Table.Row>
@@ -23,6 +24,7 @@ export function TablaServiciosAsignados({ servicios }) {
           
           <Table.Row key={index}>
             <Table.Cell>{servicio.cliente_first_name} {servicio.cliente_last_name}</Table.Cell>
+            <Table.Cell>{servicio.cliente_direccion}</Table.Cell>
             <Table.Cell>{servicio.descripcion}</Table.Cell>
             <Table.Cell>{servicio.hora_actual}</Table.Cell>
             <Table.Cell>{servicio.hora_vis}</Table.Cell>

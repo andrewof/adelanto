@@ -9,12 +9,13 @@ class ServiceSerializer(serializers.ModelSerializer):
 class ServiceDetailSerializer(serializers.ModelSerializer):
     cliente_first_name = serializers.ReadOnlyField(source='cliente.first_name')
     cliente_last_name = serializers.ReadOnlyField(source='cliente.last_name')
+    cliente_direccion = serializers.ReadOnlyField(source='cliente.direccion')
     tecnico_first_name = serializers.ReadOnlyField(source='tecnico.first_name')
     tecnico_last_name = serializers.ReadOnlyField(source='tecnico.last_name')
 
     class Meta:
         model = Services
-        fields = ['id', 'cliente_first_name', 'cliente_last_name', 'tecnico_first_name', 'tecnico_last_name', 'descripcion', 'hora_actual', 'hora_vis']
+        fields = ['id', 'cliente_first_name', 'cliente_last_name', 'cliente_direccion', 'tecnico_first_name', 'tecnico_last_name', 'descripcion', 'hora_actual', 'hora_vis']
 
 
     def to_representation(self, instance):

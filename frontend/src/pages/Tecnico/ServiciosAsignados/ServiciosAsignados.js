@@ -13,7 +13,7 @@ export function ServiciosAsignados() {
  
   return (
     <div className="servicios-asignados">
-      <h1 title>Hola</h1>
+      <h1 className="title">Servicios asignados</h1>
       {loading ? (
         <Loader active inline="centered" className="loader" />
       ):(
