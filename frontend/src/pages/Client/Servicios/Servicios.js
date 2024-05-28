@@ -7,6 +7,8 @@ import "./Servicios.scss";
 export function Servicios() {
   const { loading, servicios, getClienteServices } = useServices();
 
+  console.log(servicios)
+
   useEffect(() => {
     getClienteServices();
   }, [])

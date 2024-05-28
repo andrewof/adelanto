@@ -1,12 +1,22 @@
 import React from 'react';
-import './TecnicoLayout.scss';
+import { Navbar } from "../../components/Tecnico"
+import { useAuth } from "../../hooks";
+import "./TecnicoLayout.scss";
 
 export function TecnicoLayout({ children }) {
-  return (
-    <div>
-      <h2>TecnicoLayout</h2>
+  const { auth } = useAuth();
 
-      {children}
+  console.log(auth)
+
+  if (!auth || !auth.me || !auth.me.profesion || !auth.me.experiencia) return
+
+  return (
+    <div className="tecnico-layout">
+      <div className="tecnico-layout-navbar">
+        <Navbar />
+      </div>
+
+      { children }
     </div>
   )
 }

@@ -112,6 +112,6 @@ export function useUser() {
     setTecnico,
     updateTecnico,
     deleteTecnico,
-    registerClientes,
+    registerClientes
   };
 }

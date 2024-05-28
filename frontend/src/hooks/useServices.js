@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { setServicesApi, getClienteServicesApi, getServicesApi } from "../api/services";
+import { setServicesApi, getClienteServicesApi, getTecnicoServicesApi, getServicesApi } from "../api/services";
 import { useAuth } from "../hooks";
 
 
@@ -44,6 +44,18 @@ export function useServices() {
       setLoading(error);
     }
   }
+
+  const getTecnicoServices = async () => {
+    try {
+      setLoading(true);
+      const response = await getTecnicoServicesApi(auth.token)
+      setLoading(false);
+      setServicios(response);
+    } catch (error) {
+      setLoading(false);
+      setLoading(error);
+    }
+  }
  
 
   return {
@@ -53,5 +65,6 @@ export function useServices() {
     setServices,
     getServices,
     getClienteServices,
+    getTecnicoServices,
   }
 }

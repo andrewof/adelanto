@@ -35,7 +35,7 @@ class TecnicoServicesListView(ListAPIView):
   permission_classes = [IsAuthenticated]
 
   def get_queryset(self):
-    tecnico = self.request.tecnico
+    tecnico = self.request.user.tecnico
     return Services.objects.filter(tecnico= tecnico)
   
   def list(self, request, *args, **kwargs):
