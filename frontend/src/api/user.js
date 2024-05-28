@@ -179,14 +179,28 @@ export async function setTecnicoApi(data, token) {
 
 export async function updateTecnicoApi(id, data, token) {
   try {
+    const formData = new FormData();
+    formData.append('cedula', data.cedula)
+    formData.append('email', data.email);
+    formData.append('first_name', data.first_name);
+    formData.append('last_name', data.last_name);
+    if (data.password) {
+      formData.append('password', data.password);
+    }
+    // Append image only if it is a File object
+    if (data.image && data.image instanceof File) {
+      formData.append('image', data.image);
+    }
+    formData.append('profesion', data.profesion);
+    formData.append('experiencia', data.experiencia);
+
     const url = `${BASE_API}/api/tecnicos/${id}/`;
     const params = {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
       },
-      body: JSON.stringify(data),
+      body: formData,
     };
 
     const response = await fetch(url, params);

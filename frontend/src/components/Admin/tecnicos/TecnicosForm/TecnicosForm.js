@@ -8,7 +8,7 @@ import "./TecnicosForm.scss";
 import { toast } from "react-toastify";
 
 export function TecnicosForm({ onClose, onRefetch, titleBtn, tecnico }) {
-  const [previewImage, setPreviewImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(tecnico ? tecnico?.image : null);
   const { setTecnico, updateTecnico } = useUser();
 
   const onDrop = useCallback(async (acceptedFiled) => {
@@ -29,9 +29,16 @@ export function TecnicosForm({ onClose, onRefetch, titleBtn, tecnico }) {
     validationSchema: Yup.object(tecnico ? updateSchema() : schema()),
     validateOnChange: false,
     onSubmit: async (formValue) => {
+      console.log(formValue);
       try {
-        if (tecnico) await updateTecnico(tecnico.id, formValue) 
-        else await setTecnico(formValue);
+        if (tecnico) {
+          await updateTecnico(tecnico.id, formValue);
+          toast.success("Datos actualizados")
+        }
+        else {
+          await setTecnico(formValue);
+          toast.success("Técnico registrado")
+        }
         onRefetch();
         onClose();
       } catch (error) {
@@ -125,6 +132,7 @@ function updateSchema() {
     last_name: Yup.string(),
     email: Yup.string().email(true).required(true),
     password: Yup.string(),
+    image: Yup.string(),
     profesion: Yup.string().required(true),
     experiencia: Yup.number().required(true),
   }
